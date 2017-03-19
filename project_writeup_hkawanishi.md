@@ -36,6 +36,7 @@ The HOG feature (`get_hog_features()` function) is contained in the third cell. 
 
 I started by reading images in the `vehicles` and `non-vehicle` from the given zip files.  
 Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
+(left is car image, right is non-car image)
 
 ![car image example][image1]
 ![non-car image example][image2]
@@ -45,6 +46,7 @@ I didn't use a clever statistic method to select these parameters. These were se
 
 Here is an example using the `YCrCb` color space and HOG parameters of `orientation=9`, `pix_per_cell=8`, `spatial_size=(16,16)`.
 
+(left is HOG car image, right is HOG non-car image)
 ![car hog image example][image3]
 ![noncar hog image example][image4]
 
@@ -118,7 +120,10 @@ Sometimes the model picked up the vehicles on the opposite lanes on the left.  I
 
 To avoid multiple detections and reduce false positives, I implemented heat-map scheme inside `find_cars()` function (cell 11).  I zeroed out pixels with negative values in `apply_threshold()` (cell 10).  See the figures before and after applying the threshold.  I imported `label` from `scipy.ndimage.measrements`  (cell 10) and put a bounding box around the labeled regions (`draw_labeled_dboxes()` in cell 10).  
 
+This is before threshold is applied with one of the images
 ![heat image before apply threshold][image7]
+
+This is after threshold is applied.   
 ![heat image after apply threshold][image8]
 
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
