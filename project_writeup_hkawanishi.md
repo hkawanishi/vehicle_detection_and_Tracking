@@ -21,6 +21,8 @@ The goals / steps of this project are the following:
 [image4]: ./output_images/noncar_hog_image_example.jpg
 [image5]: ./output_images/car_image_with_boxes1.jpg
 [image6]: ./output_images/heat_image1.jpg
+[image7]: ./output_images/heat_image_before.jpg
+[image8]: ./output_images/heat_image_after.jpg
 [video1]: ./project_output.mp4
 
 
@@ -114,7 +116,10 @@ Sometimes the model picked up the vehicles on the opposite lanes on the left.  I
 
 ####2. Describe how I implemented to reduce false positives. 
 
-To avoid multiple detections and reduce false positives, I implemented heat-map scheme inside `find_cars()` function (cell 11).  I zeroed out pixels with negative values in `apply_threshold()` (cell 10).  I imported `label` from `scipy.ndimage.measrements`  (cell 10) and put a bounding box around the labeled regions (`draw_labeled_dboxes()` in cell 10).  
+To avoid multiple detections and reduce false positives, I implemented heat-map scheme inside `find_cars()` function (cell 11).  I zeroed out pixels with negative values in `apply_threshold()` (cell 10).  See the figures before and after applying the threshold.  I imported `label` from `scipy.ndimage.measrements`  (cell 10) and put a bounding box around the labeled regions (`draw_labeled_dboxes()` in cell 10).  
+
+![heat image before apply threshold][image7]
+![heat image after apply threshold][image8]
 
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
 (Heat map result example is shown in above, section 2).  
