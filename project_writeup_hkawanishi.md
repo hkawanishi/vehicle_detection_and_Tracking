@@ -1,6 +1,9 @@
 **Vehicle Detection Project**
 
-The code is written in : ####P5-hkawanishi-2.ipynb
+**My code: P5-hkawanishi-2.ipynb**
+
+**My Project Video: project_output.mp4**
+
 
 The goals / steps of this project are the following:
 
